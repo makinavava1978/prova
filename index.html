@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenador Musical</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Librerías -->
+    <script src="https://unpkg.com/vexflow/build/vexflow-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+</head>
+<body>
+    <h1>Entrenador Musical</h1>
+
+    <div class="tabs">
+        <button class="tab-button active" data-mode="mode1">Modo 1: Entrenamiento Auditivo</button>
+        <button class="tab-button" data-mode="mode2">Modo 2: Lectura a Primera Vista</button>
+    </div>
+
+    <div id="app">
+        <div id="mode1" class="mode-container active">
+            <h2>Modo 1: Entrenamiento Auditivo</h2>
+            <p>Escucha la nota y haz clic en el pentagrama para adivinar cuál es.</p>
+            <div id="staff-container-m1"></div>
+            <div class="controls">
+                <button id="play-random-note-btn">Tocar Nota Aleatoria</button>
+                <button id="repeat-note-btn">Repetir Nota</button>
+                <button id="play-major-chord-btn">Tocar Acorde Mayor</button>
+            </div>
+            <div class="settings">
+                <div class="clef-selection">
+                    <span>Clave:</span>
+                    <label><input type="radio" name="clef-m1" value="treble" checked> Sol</label>
+                    <label><input type="radio" name="clef-m1" value="bass"> Fa</label>
+                </div>
+                <div class="note-selection">
+                    <span>Notas permitidas (Octava 4):</span>
+                    <label><input type="checkbox" name="notes-m1" value="C4" checked> C</label>
+                    <label><input type="checkbox" name="notes-m1" value="D4" checked> D</label>
+                    <label><input type="checkbox" name="notes-m1" value="E4" checked> E</label>
+                    <label><input type="checkbox" name="notes-m1" value="F4" checked> F</label>
+                    <label><input type="checkbox" name="notes-m1" value="G4" checked> G</label>
+                    <label><input type="checkbox" name="notes-m1" value="A4" checked> A</label>
+                    <label><input type="checkbox" name="notes-m1" value="B4" checked> B</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="mode2" class="mode-container">
+            <h2>Modo 2: Lectura a Primera Vista</h2>
+            <p>Genera una partitura aleatoria y pulsa Play para escucharla.</p>
+            <div id="staff-container-m2"></div>
+            <div class="controls">
+                <button id="generate-score-btn">Generar Nueva Partitura</button>
+                <button id="play-score-btn">Play</button>
+            </div>
+            <div class="settings">
+                <div class="clef-selection">
+                    <span>Clave:</span>
+                    <label><input type="radio" name="clef-m2" value="treble" checked> Sol</label>
+                    <label><input type="radio" name="clef-m2" value="bass"> Fa</label>
+                </div>
+                <div class="note-selection">
+                    <span>Notas permitidas:</span>
+                    <label><input type="checkbox" name="notes-m2" value="C4" checked> C4</label>
+                    <label><input type="checkbox" name="notes-m2" value="D4" checked> D4</label>
+                    <label><input type="checkbox" name="notes-m2" value="E4" checked> E4</label>
+                    <label><input type="checkbox" name="notes-m2" value="F4" checked> F4</label>
+                    <label><input type="checkbox" name="notes-m2" value="G4" checked> G4</label>
+                    <label><input type="checkbox" name="notes-m2" value="A4" checked> A4</label>
+                    <label><input type="checkbox" name="notes-m2" value="B4" checked> B4</label>
+                </div>
+                <div>
+                    <label for="measures-m2">Número de compases (1-8):</label>
+                    <input type="number" id="measures-m2" name="measures-m2" min="1" max="8" value="2">
+                </div>
+                <div>
+                    <label for="tempo-m2">Tempo (BPM):</label>
+                    <input type="range" id="tempo-m2" name="tempo-m2" min="60" max="180" value="120">
+                    <span id="tempo-value-m2">120</span>
+                </div>
+                <div>
+                    <label for="difficulty-m2">Dificultad:</label>
+                    <select id="difficulty-m2" name="difficulty-m2">
+                        <option value="1">Fácil (redondas y blancas)</option>
+                        <option value="2" selected>Medio (blancas y negras)</option>
+                        <option value="3">Difícil (negras y corcheas)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
